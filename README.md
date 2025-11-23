@@ -1,1 +1,83 @@
-# Animal-Environment-Protection Project
+# 🌍 EcoLife – Environment & Animal Safety Hub
+
+EcoLife is an interactive and visually engaging platform created to promote
+environment protection, waste management, animal safety, and climate awareness.
+It encourages users — especially kids — to take part in real-life eco-friendly
+activities through education and quizzes.
+
+---
+
+## ✨ Features
+
+### 🐾 Animal Protection & Adoption
+- Adopt and support stray animals
+- Learn how to protect endangered wildlife
+
+### 🗑 Waste Segregation
+- Reduce, reuse & recycle with simple guidance
+- Awareness for community clean-ups
+
+### 🌡 Climate Change Awareness
+- Learn how to reduce carbon footprint
+- Save energy and plant more trees for a greener world
+
+### 🌱 Plant Care & Animal Feeding
+- Basic tips to take care of common plants
+- Feed animals safely and responsibly
+
+### 🎯 Kids Quiz Section
+- Fun quiz for children to learn sustainability interactively
+
+### 📝 Report & Contact
+- Report environmental issues or animal abuse
+- Contact page for assistance or volunteering
+
+---
+
+## 🛠 Tech Stack
+
+| Technology | Role |
+|-----------|------|
+| HTML5     | Structure & layout |
+| CSS3      | Styling, responsiveness & UI design |
+| JavaScript| Functional interactivity |
+
+---
+
+## 📸 UI Preview
+
+![alt text](IMG_3146.jpeg)
+![alt text](IMG_3147.jpeg)  
+![alt text](IMG_3148.jpeg)
+
+---
+
+## 👥 Contributors
+
+| Name | Role |
+|------|------|
+| Jagrati | Project Owner & Developer |
+| MENTORS NAME | 
+| ContributorS NAME |
+
+_Thanks to everyone supporting this initiative!_ 💚
+
+---
+
+## 🚀 Future Enhancements
+- Admin dashboard to manage content
+- User login & save quiz score feature
+- Animations & interactive infographics
+- Dark mode and accessibility improvements
+
+---
+
+## 📜 License
+This project is created for education & awareness purposes only.
+
+---
+
+### ⭐ Support the Project
+If you like this project, please give it a ⭐ on GitHub!
+
+Together we can make Earth a better place! 🌏💚
