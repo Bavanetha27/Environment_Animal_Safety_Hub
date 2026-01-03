@@ -810,6 +810,7 @@ document.getElementById("carbonForm").addEventListener("submit", function (e) {
   else level = "🔥 High Footprint – Time to take action!";
 
   // Display result
+  const resultDiv = document.getElementById("carbonResult");
   document.getElementById("carbonScore").innerText = score;
   document.getElementById("carbonLevel").innerText = level;
 
@@ -817,11 +818,15 @@ document.getElementById("carbonForm").addEventListener("submit", function (e) {
   tipsList.innerHTML = "";
   tips.forEach(tip => {
     const li = document.createElement("li");
-    li.innerText = tip;
+    li.innerHTML = `<i class="fa-solid fa-lightbulb"></i> ${tip}`;
     tipsList.appendChild(li);
   });
 
-  document.getElementById("carbonResult").style.display = "block";
+  resultDiv.style.display = "block";
+  resultDiv.classList.add("success");
+
+  // Scroll to result
+  resultDiv.scrollIntoView({ behavior: "smooth", block: "center" });
 });
 
 const glossaryData = [
