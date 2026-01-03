@@ -63,6 +63,101 @@
   --font-primary: "Poppins", sans-serif;
 }
 
+
+/* ================================
+   Eco Activity Highlight Cards
+   Issue #111 – EcoLife
+================================ */
+
+/* Card Container */
+.eco-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+  padding: 2rem;
+}
+
+/* Eco Card */
+.eco-card {
+  background: linear-gradient(145deg, #e8f5e9, #f1fff3);
+  border-radius: 18px;
+  padding: 1.6rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0, 128, 0, 0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: pointer;
+}
+
+/* Soft Nature Glow */
+.eco-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top,
+      rgba(76, 175, 80, 0.35),
+      transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Hover Animation */
+.eco-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 16px 35px rgba(56, 142, 60, 0.35);
+}
+
+.eco-card:hover::before {
+  opacity: 1;
+}
+
+/* Icon / Emoji */
+.eco-card .eco-icon {
+  font-size: 3rem;
+  margin-bottom: 0.6rem;
+}
+
+/* Card Title */
+.eco-card h3 {
+  font-size: 1.3rem;
+  color: #2e7d32;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Card Text */
+.eco-card p {
+  font-size: 1rem;
+  color: #3e3e3e;
+  line-height: 1.6;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .eco-card {
+    transition: none;
+  }
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+  .eco-card {
+    padding: 1.3rem;
+  }
+
+  .eco-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .eco-card p {
+    font-size: 0.95rem;
+  }
+}
+
+
+
+
 /* ===== RESET & BASE ===== */
 * {
   margin: 0;
@@ -399,3 +494,99 @@ body {
   overflow-x: hidden;
 }
 
+
+   Nature Progress Banner (Issue #112)
+================================ */
+
+
+/* ================================
+   Nature Progress Banner (Issue #112)
+================================ */
+
+.eco-awareness-feature {
+  position: relative;
+  z-index: 5;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Banner */
+.eco-awareness-feature .nature-banner {
+  background: linear-gradient(135deg, #2e7d32, #66bb6a);
+  border-radius: 16px;
+  padding: 1.4rem 1.6rem;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.eco-awareness-feature h3 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.eco-awareness-feature p {
+  font-size: 0.95rem;
+  margin-top: 6px;
+  opacity: 0.95;
+}
+
+/* Progress Bar */
+.eco-awareness-feature .progress-bar {
+  margin-top: 1rem;
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.eco-awareness-feature .progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #c8e6c9;
+  animation: ecoProgress 4s ease-in-out infinite;
+}
+
+@keyframes ecoProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* Awareness Strip */
+.eco-awareness-feature .awareness-strip {
+  margin-top: 1rem;
+  display: flex;
+  gap: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #e8f5e9;
+  font-weight: 600;
+}
+
+.eco-awareness-feature .awareness-strip span {
+  animation: ecoScroll 14s linear infinite;
+}
+
+@keyframes ecoScroll {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .eco-awareness-feature h3 {
+    font-size: 1.05rem;
+  }
+}
+/* Fix overlap: Eco Awareness Banner should sit below hero */
+.eco-awareness-section {
+  position: relative;
+  margin-top: 3rem;
+  z-index: 2;
+}
+
+/* Ensure hero does not overlap next sections */
+.hero-section {
+  overflow: visible;
+}
