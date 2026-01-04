@@ -1180,3 +1180,52 @@ const toggle = document.getElementById("themeToggle");
       behavior: "smooth"
     });
   });
+
+ 
+const chatBody = document.getElementById("chatBody");
+
+function sendMessage() {
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if (!message) return;
+
+  addMessage(message, "user-message");
+  input.value = "";
+
+  setTimeout(() => {
+    const reply = getBotReply(message.toLowerCase());
+    addMessage(reply, "bot-message");
+  }, 600);
+}
+
+function addMessage(text, className) {
+  const div = document.createElement("div");
+  div.className = className;
+  div.innerText = text;
+  chatBody.appendChild(div);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function getBotReply(msg) {
+  if (msg.includes("carbon")) {
+    return "Reducing carbon footprint helps slow climate change 🌱 Try using public transport!";
+  }
+  if (msg.includes("plastic")) {
+    return "Plastic harms oceans 🐢 Try reusable bags and bottles.";
+  }
+  if (msg.includes("trees")) {
+    return "Trees give oxygen and shelter 🌳 Planting even one helps!";
+  }
+  if (msg.includes("water")) {
+    return "Save water by fixing leaks and using buckets 🚿";
+  }
+  if (msg.includes("hello") || msg.includes("hi")) {
+    return "Hello! 😊 Ask me about environment, climate or sustainability.";
+  }
+  if (msg.includes("help")) {
+    return "I can guide you on eco-friendly habits 🌍";
+  }
+
+  return "That's interesting 🤔 Try asking about climate, trees, plastic, or water.";
+}
+
