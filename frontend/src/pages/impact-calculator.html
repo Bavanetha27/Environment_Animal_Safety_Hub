@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Environmental Impact Calculator | EcoLife</title>
     <link rel="icon" type="image/png" href="../assets/FAVICON.png">
-    
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/components/navbar.css">
     <link rel="stylesheet" href="../css/components/footer.css">
     <link rel="stylesheet" href="../css/pages/impact-calculator.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="../index.html" class="logo">
-                <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="EcoLife Logo" class="logo-img">
-                <span>EcoLife</span>
-            </a>
-            
-            <div class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="../index.html" class="nav-link">Home</a></li>
-                <li><a href="../index.html#about" class="nav-link">About</a></li>
-                <li><a href="../index.html#animal" class="nav-link">Animals</a></li>
-                <li><a href="../index.html#environment" class="nav-link">Environment</a></li>
-                <li><a href="impact-calculator.html" class="nav-link active">Calculator</a></li>
-                <li><a href="../index.html#report" class="nav-link">Report</a></li>
-            </ul>
-        </div>
-    </nav>
+    <header class="page-top">
+        <a href="../index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span class="back-text">Back to Home</span>
+        </a>
+    </header>
 
     <!-- Hero Section -->
     <section class="calculator-hero">
         <div class="section-container">
-            <div class="hero-content">
-                <span class="section-tag">
+            <div class="hero-card fade-up">
+                <span class="section-tag fade-up delay-1">
                     <i class="fa-solid fa-calculator"></i> Impact Calculator
                 </span>
-                <h1 class="section-title">Know Your Environmental Impact</h1>
-                <p class="section-subtitle">
-                    Discover your carbon footprint and get personalized tips to reduce your environmental impact
+
+                <h1 class="section-title fade-up delay-2">
+                    Know Your Environmental Impact
+                </h1>
+
+                <p class="section-subtitle fade-up delay-3">
+                    Discover your carbon footprint and get personalized tips to live greener 🌱
                 </p>
+
+                <div class="hero-actions fade-up delay-3">
+                    <button class="btn btn-primary btn-xl" id="startCalculatorBtn">
+                        <i class="fa-solid fa-play"></i> Calculate Now
+                    </button>
+                </div>
             </div>
         </div>
+        <!-- Floating Eco Elements -->
+        <div class="eco-float leaf-1">🍃</div>
+        <div class="eco-float leaf-2">🌱</div>
+        <div class="eco-float leaf-3">🌍</div>
+        <div class="eco-float leaf-4">🍀</div>
+        <div class="eco leaf-5">🌿</div>
+
     </section>
+
 
     <!-- Calculator Section -->
     <section class="calculator-section">
@@ -71,16 +73,18 @@
             <div class="calculator-container">
                 <!-- Quiz Form -->
                 <div class="calculator-form" id="calculatorForm">
-                    <div class="form-header">
+                    <div class="form-header fade-up delay-1">
+
                         <h2><i class="fa-solid fa-leaf"></i> Lifestyle Assessment</h2>
                         <p>Answer these questions to calculate your environmental impact</p>
                     </div>
 
                     <form id="impactForm">
                         <!-- Transportation -->
-                        <div class="question-group">
+                        <div class="question-group fade-up delay-2">
+
                             <h3><i class="fa-solid fa-car"></i> Transportation</h3>
-                            
+
                             <div class="form-group">
                                 <label>Primary mode of transport:</label>
                                 <select name="transport" required>
@@ -106,9 +110,10 @@
                         </div>
 
                         <!-- Energy Usage -->
-                        <div class="question-group">
+                        <div class="question-group fade-up delay-2">
+
                             <h3><i class="fa-solid fa-bolt"></i> Energy Usage</h3>
-                            
+
                             <div class="form-group">
                                 <label>Monthly electricity bill (₹):</label>
                                 <select name="electricity" required>
@@ -133,9 +138,10 @@
                         </div>
 
                         <!-- Diet -->
-                        <div class="question-group">
+                        <div class="question-group fade-up delay-2">
+
                             <h3><i class="fa-solid fa-utensils"></i> Diet & Food</h3>
-                            
+
                             <div class="form-group">
                                 <label>Dietary preference:</label>
                                 <select name="diet" required>
@@ -161,9 +167,10 @@
                         </div>
 
                         <!-- Water Usage -->
-                        <div class="question-group">
+                        <div class="question-group fade-up delay-2">
+
                             <h3><i class="fa-solid fa-droplet"></i> Water Usage</h3>
-                            
+
                             <div class="form-group">
                                 <label>Daily shower time:</label>
                                 <select name="shower" required>
@@ -188,9 +195,10 @@
                         </div>
 
                         <!-- Waste & Consumption -->
-                        <div class="question-group">
+                        <div class="question-group fade-up delay-2">
+
                             <h3><i class="fa-solid fa-recycle"></i> Waste & Consumption</h3>
-                            
+
                             <div class="form-group">
                                 <label>Plastic usage:</label>
                                 <select name="plastic" required>
@@ -221,13 +229,13 @@
                 </div>
 
                 <!-- Results Section -->
-                <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-section fade-up" id="resultsSection" style="display: none;">
                     <div class="results-header">
                         <h2><i class="fa-solid fa-chart-pie"></i> Your Environmental Impact</h2>
                         <p>Here's your personalized environmental assessment</p>
                     </div>
 
-                    <div class="results-grid">
+                    <div class="results-grid fade-up">
                         <!-- Overall Score -->
                         <div class="result-card main-score">
                             <div class="score-circle" id="scoreCircle">
@@ -241,7 +249,8 @@
                         </div>
 
                         <!-- Category Breakdown -->
-                        <div class="result-card">
+                        <div class="result-card fade-up">
+
                             <h3><i class="fa-solid fa-chart-bar"></i> Impact Breakdown</h3>
                             <canvas id="breakdownChart"></canvas>
                         </div>
@@ -297,7 +306,7 @@
                 <h2><i class="fa-solid fa-chart-line"></i> Track Your Progress</h2>
                 <p>Monitor your environmental impact over time</p>
             </div>
-            
+
             <div class="tracking-grid">
                 <div class="tracking-card">
                     <h3>Previous Results</h3>
@@ -305,7 +314,7 @@
                         <p>No previous results found. Take the quiz to start tracking!</p>
                     </div>
                 </div>
-                
+
                 <div class="tracking-card">
                     <h3>Progress Chart</h3>
                     <canvas id="progressChart"></canvas>
@@ -326,7 +335,7 @@
                     Calculate, understand, and reduce your environmental impact for a sustainable future.
                 </p>
             </div>
-            
+
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
@@ -337,7 +346,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <div class="footer-container">
                 <p>Made with ❤️ by <strong>Jagrati</strong> | © 2026 EcoLife. All rights reserved.</p>
@@ -349,4 +358,5 @@
     <script src="../js/main.js"></script>
     <script src="../js/pages/impact-calculator.js"></script>
 </body>
+
 </html>

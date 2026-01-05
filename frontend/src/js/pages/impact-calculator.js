@@ -626,3 +626,31 @@ function showNotification(message, type = 'info') {
         alert(message); // Fallback
     }
 }
+
+// Reveal animations on load
+window.addEventListener('load', () => {
+  document.querySelectorAll('.fade-up').forEach(el => {
+    el.style.animationPlayState = 'running';
+  });
+});
+
+
+
+// Scroll to calculator form when hero button is clicked
+document.getElementById('startCalculatorBtn')?.addEventListener('click', () => {
+  const formSection = document.querySelector('.calculator-section');
+  if (formSection) {
+    formSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+});
+
+document.getElementById("startCalculatorBtn")
+  ?.addEventListener("click", () => {
+    document
+      .querySelector(".calculator-section")
+      .scrollIntoView({ behavior: "smooth" });
+  });
+
