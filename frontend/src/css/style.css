@@ -2068,3 +2068,101 @@ body.dark-theme .bot-message {
     font-size: 1.8rem;
   }
 }
+
+/* =============================== */
+/* ECO CHALLENGES – FINAL STYLES */
+/* =============================== */
+
+.eco-challenges-section {
+  padding: 100px 0;
+  background: #f6fbf7;
+}
+
+/* Container spacing */
+.eco-challenges-section .section-container {
+  max-width: 1280px;      /* wider container */
+  margin: 0 auto;
+  padding: 0 40px;        /* more side spacing */
+}
+
+/* GRID – FORCE 3 CARDS PER ROW */
+.eco-challenges-section .eco-ch-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;              /* more gap between cards */
+  margin-top: 60px;
+}
+
+/* CARD – BIGGER SIZE */
+.eco-challenges-section .eco-ch-card {
+  background: #ffffff;
+  padding: 44px 36px;     /* ⬆ bigger padding */
+  border-radius: 22px;
+  text-align: center;
+  min-height: 300px;      /* ⬆ taller cards */
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* ICON – BIGGER */
+.eco-challenges-section .eco-ch-card i {
+  font-size: 48px;        /* ⬆ larger icon */
+  color: #2ecc71;
+  margin-bottom: 18px;
+  transition: transform 0.3s ease;
+}
+
+/* TITLE */
+.eco-challenges-section .eco-ch-card h3 {
+  font-size: 22px;        /* ⬆ bigger title */
+  margin-bottom: 12px;
+  color: #1f2937;
+}
+
+/* TEXT */
+.eco-challenges-section .eco-ch-card p {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 26px;
+  line-height: 1.7;
+}
+
+/* BUTTON */
+.eco-challenges-section .eco-ch-btn {
+  padding: 12px 30px;
+  border-radius: 999px;
+  border: none;
+  background: #2ecc71;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.eco-challenges-section .eco-ch-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 26px 60px rgba(46, 204, 113, 0.25);
+}
+
+.eco-challenges-section .eco-ch-card:hover i {
+  transform: scale(1.15);
+}
+
+.eco-challenges-section .eco-ch-btn:hover {
+  background: #27ae60;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .eco-challenges-section .eco-ch-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .eco-challenges-section .eco-ch-grid {
+    grid-template-columns: 1fr;
+  }
+}
