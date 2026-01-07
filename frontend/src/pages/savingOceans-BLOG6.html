@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saving Our Oceans: The Microplastic Problem | EcoLife</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Ocean & Marine Theme */
+            --ocean-blue: #0288D1;
+            --deep-blue: #01579B;
+            --coral-pink: #FF8A80;
+            --seafoam-green: #80CBC4;
+            --sand-beige: #FFF3E0;
+            --light-bg: #E3F2FD;
+            --card-bg: #FFFFFF;
+            --text-dark: #01579B;
+            --text-light: #0288D1;
+            --impact-red: #F44336;
+            --solution-teal: #26A69A;
+            --shadow: 0 15px 35px rgba(2, 136, 209, 0.1);
+            --shadow-heavy: 0 25px 50px rgba(2, 136, 209, 0.15);
+            --gradient-ocean: linear-gradient(135deg, #0288D1, #01579B);
+            --gradient-sea: linear-gradient(135deg, #80CBC4, #4DB6AC);
+            --gradient-coral: linear-gradient(135deg, #FF8A80, #FF5252);
+            --gradient-wave: linear-gradient(135deg, #E3F2FD, #B3E5FC);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        [data-theme="dark"] {
+            /* Deep Ocean Dark Theme */
+            --ocean-blue: #29B6F6;
+            --deep-blue: #0277BD;
+            --coral-pink: #FFAB91;
+            --seafoam-green: #4DB6AC;
+            --sand-beige: #2E2E2E;
+            --light-bg: #0D1B2A;
+            --card-bg: #1E2A3A;
+            --text-dark: #E3F2FD;
+            --text-light: #81D4FA;
+            --impact-red: #EF5350;
+            --solution-teal: #26A69A;
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            --shadow-heavy: 0 25px 50px rgba(0, 0, 0, 0.4);
+            --gradient-ocean: linear-gradient(135deg, #0277BD, #01579B);
+            --gradient-sea: linear-gradient(135deg, #00695C, #004D40);
+            --gradient-coral: linear-gradient(135deg, #D84315, #BF360C);
+            --gradient-wave: linear-gradient(135deg, #1E2A3A, #0D1B2A);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.8;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Wave Pattern Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,50 Q25,30 50,50 Q75,70 100,50" fill="none" stroke="%230288D1" stroke-width="0.5" opacity="0.1"/></svg>');
+            background-size: 100px 100px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        [data-theme="dark"] body::before {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,50 Q25,30 50,50 Q75,70 100,50" fill="none" stroke="%2329B6F6" stroke-width="0.5" opacity="0.05"/></svg>');
+        }
+
+        /* Theme Toggle */
+        .theme-toggle-container {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .theme-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid var(--ocean-blue);
+            color: var(--ocean-blue);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-ocean);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover::before {
+            opacity: 0.1;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: 0 15px 35px rgba(2, 136, 209, 0.2);
+        }
+
+        .theme-toggle i {
+            position: relative;
+            z-index: 2;
+        }
+
+        .theme-toggle .fa-sun {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .fa-sun {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .fa-moon {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-ocean);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 40px 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(41, 182, 246, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(1, 87, 155, 0.2) 0%, transparent 50%),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 Q50,70 100,100 L100,0 L0,0 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            transition: var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-icon:hover {
+            transform: translateY(-10px) scale(1.1);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Main Content */
+        .content-section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 100px 40px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.2rem;
+            color: var(--ocean-blue);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-ocean);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin-bottom: 60px;
+        }
+
+        /* Microplastic Scale */
+        .scale-section {
+            background: var(--gradient-wave);
+            border-radius: var(--border-radius);
+            padding: 80px 40px;
+            margin: 80px 0;
+            box-shadow: inset 0 0 50px rgba(2, 136, 209, 0.1);
+        }
+
+        .scale-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .scale-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px 35px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid;
+            text-align: center;
+        }
+
+        .scale-card.micro {
+            border-top-color: var(--seafoam-green);
+        }
+
+        .scale-card.meso {
+            border-top-color: var(--ocean-blue);
+        }
+
+        .scale-card.macro {
+            border-top-color: var(--impact-red);
+        }
+
+        .scale-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .scale-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-wave);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 25px;
+            transition: var(--transition);
+        }
+
+        .scale-card.micro .scale-icon {
+            background: var(--gradient-sea);
+            color: white;
+        }
+
+        .scale-card.meso .scale-icon {
+            background: var(--gradient-ocean);
+            color: white;
+        }
+
+        .scale-card.macro .scale-icon {
+            background: var(--gradient-coral);
+            color: white;
+        }
+
+        .scale-card:hover .scale-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .scale-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .scale-comparison {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+
+        .scale-comparison li {
+            padding: 10px 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 25px;
+            text-align: left;
+            border-bottom: 1px dashed rgba(2, 136, 209, 0.2);
+        }
+
+        .scale-comparison li:last-child {
+            border-bottom: none;
+        }
+
+        .scale-comparison li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--ocean-blue);
+            font-size: 1.5rem;
+        }
+
+        /* Sources Section */
+        .sources-section {
+            margin: 100px 0;
+            position: relative;
+        }
+
+        .sources-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .source-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px 35px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid var(--coral-pink);
+        }
+
+        .source-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .source-icon {
+            font-size: 3.5rem;
+            color: var(--coral-pink);
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .source-percentage {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--coral-pink);
+            opacity: 0.3;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            background: var(--gradient-coral);
+            border-radius: var(--border-radius);
+            padding: 80px 40px;
+            margin: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .impact-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .impact-card h4 {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* Solutions Section */
+        .solutions-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 60px 40px;
+            margin: 80px 0;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--solution-teal);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .solution-card {
+            padding: 35px 30px;
+            background: var(--gradient-wave);
+            border-radius: 15px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--solution-teal);
+        }
+
+        .solution-card h4 {
+            color: var(--solution-teal);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* Personal Action */
+        .action-section {
+            text-align: center;
+            padding: 100px 40px;
+            background: var(--gradient-sea);
+            border-radius: var(--border-radius);
+            margin: 100px 0;
+        }
+
+        .action-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .action-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .action-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .action-icon {
+            font-size: 3.5rem;
+            color: var(--solution-teal);
+            margin-bottom: 25px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .action-card:hover .action-icon {
+            transform: scale(1.2);
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: var(--gradient-ocean);
+            border-radius: var(--border-radius);
+            padding: 100px 40px;
+            margin: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            animation: float 20s linear infinite;
+        }
+
+        .cta-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-text {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button {
+            padding: 18px 35px;
+            background: white;
+            color: var(--ocean-blue);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            gap: 20px;
+            background: var(--sand-beige);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: var(--ocean-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gradient-ocean);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 80px 40px 40px;
+            margin-top: 100px;
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-column h3 i {
+            color: var(--seafoam-green);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Bubble Animations */
+        .bubble {
+            position: fixed;
+            background: var(--ocean-blue);
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(1px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+            }
+            
+            .scale-grid,
+            .sources-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.4rem;
+            }
+            
+            .content-section {
+                padding: 60px 20px;
+            }
+            
+            .hero-icons {
+                gap: 20px;
+            }
+            
+            .hero-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .theme-toggle-container {
+                top: 20px;
+                right: 20px;
+            }
+            
+            .theme-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <i class="fas fa-moon"></i>
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Saving Our Oceans:<br>The Microplastic Problem</h1>
+            <p class="hero-subtitle">
+                Discover the invisible threat choking our seas and learn how we can 
+                turn the tide on plastic pollution before it's too late.
+            </p>
+            
+            <div class="hero-icons">
+                <div class="hero-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <div class="hero-icon">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <div class="hero-icon">
+                    <i class="fas fa-trash"></i>
+                </div>
+                <div class="hero-icon">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+            </div>
+            
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+                <i class="fas fa-info-circle"></i> Microplastics are now found in every ocean, from surface to seafloor.
+            </p>
+        </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="content-section" id="problem">
+        <h2 class="section-title">What Are Microplastics?</h2>
+        <p class="section-subtitle">
+            Microplastics are plastic particles smaller than 5mm – smaller than a sesame seed. 
+            They're so tiny they can travel through water filtration systems and enter our food chain.
+        </p>
+        
+        <div style="background: var(--gradient-wave); padding: 40px; border-radius: var(--border-radius);">
+            <p style="font-size: 1.2rem; color: var(--text-dark); text-align: center;">
+                <i class="fas fa-quote-left" style="color: var(--ocean-blue); font-size: 1.5rem;"></i>
+                We're filling the ocean with plastic confetti that never goes away – 
+                it just breaks into smaller and smaller pieces that enter every level of marine life.
+                <i class="fas fa-quote-right" style="color: var(--ocean-blue); font-size: 1.5rem;"></i>
+            </p>
+        </div>
+    </section>
+
+    <!-- Microplastic Scale -->
+    <section class="scale-section" id="scale">
+        <h2 class="section-title" style="color: var(--ocean-blue); text-align: center;">Understanding the Scale</h2>
+        <p class="section-subtitle" style="color: var(--text-light); text-align: center;">
+            Microplastics come in different sizes, each with unique impacts on marine life.
+        </p>
+        
+        <div class="scale-grid">
+            <!-- Microplastics -->
+            <div class="scale-card micro">
+                <div class="scale-icon">
+                    <i class="fas fa-eye-slash"></i>
+                </div>
+                <h3>Microplastics<br>(&lt; 5mm)</h3>
+                <p>Invisible to the naked eye but everywhere in our oceans.</p>
+                
+                <ul class="scale-comparison">
+                    <li>Smaller than a sesame seed</li>
+                    <li>Pass through water filters</li>
+                    <li>Ingested by plankton</li>
+                    <li>Enter food chain at base</li>
+                    <li>Most abundant in ocean</li>
+                </ul>
+                
+                <div style="background: rgba(128, 203, 196, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                    <p style="color: var(--seafoam-green); font-size: 0.9rem;">
+                        <i class="fas fa-lightbulb"></i> 
+                        <strong>Example:</strong> Microbeads from cosmetics, synthetic fibers from clothing
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Mesoplastics -->
+            <div class="scale-card meso">
+                <div class="scale-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Mesoplastics<br>(5mm - 2.5cm)</h3>
+                <p>Visible plastic fragments that are breaking down but not yet microscopic.</p>
+                
+                <ul class="scale-comparison">
+                    <li>Size of a pencil eraser</li>
+                    <li>Visible to naked eye</li>
+                    <li>Ingested by small fish</li>
+                    <li>Often mistaken for food</li>
+                    <li>Continues to break down</li>
+                </ul>
+                
+                <div style="background: rgba(2, 136, 209, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                    <p style="color: var(--ocean-blue); font-size: 0.9rem;">
+                        <i class="fas fa-lightbulb"></i> 
+                        <strong>Example:</strong> Broken bottle fragments, degraded packaging pieces
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Macroplastics -->
+            <div class="scale-card macro">
+                <div class="scale-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Macroplastics<br>(&gt; 2.5cm)</h3>
+                <p>Large plastic items that will eventually break into microplastics.</p>
+                
+                <ul class="scale-comparison">
+                    <li>Larger than a bottle cap</li>
+                    <li>Entangles marine life</li>
+                    <li>Blocks digestive tracts</li>
+                    <li>Source of microplastics</li>
+                    <li>Most visible pollution</li>
+                </ul>
+                
+                <div style="background: rgba(255, 138, 128, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
+                    <p style="color: var(--coral-pink); font-size: 0.9rem;">
+                        <i class="fas fa-lightbulb"></i> 
+                        <strong>Example:</strong> Plastic bags, bottles, fishing nets, containers
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sources Section -->
+    <section class="sources-section" id="sources">
+        <h2 class="section-title">Where Do They Come From?</h2>
+        <p class="section-subtitle">
+            Microplastics enter our oceans from many surprising sources – not just litter.
+        </p>
+        
+        <div class="sources-container">
+            <div class="source-card">
+                <div class="source-percentage">35%</div>
+                <div class="source-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>Synthetic Clothing</h3>
+                <p>A single laundry load can release 700,000 microfibers. These tiny plastic fibers pass through water treatment plants into rivers and oceans.</p>
+            </div>
+            
+            <div class="source-card">
+                <div class="source-percentage">28%</div>
+                <div class="source-icon">
+                    <i class="fas fa-tire"></i>
+                </div>
+                <h3>Tire Wear</h3>
+                <p>As tires wear down on roads, they release microplastic particles that wash into waterways with rainwater. One of the largest sources of microplastics.</p>
+            </div>
+            
+            <div class="source-card">
+                <div class="source-percentage">24%</div>
+                <div class="source-icon">
+                    <i class="fas fa-city"></i>
+                </div>
+                <h3>City Dust</h3>
+                <p>From artificial turf, paint flakes, and construction materials. Urban areas generate significant microplastic dust that enters stormwater systems.</p>
+            </div>
+            
+            <div class="source-card">
+                <div class="source-percentage">13%</div>
+                <div class="source-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <h3>Road Markings</h3>
+                <p>Plastic-based road paint wears off and becomes microplastic particles. These wash into drains and eventually reach the ocean.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section" id="impact">
+        <h2 class="section-title" style="color: white; text-align: center;">Impact on Marine Life</h2>
+        <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.95); text-align: center;">
+            The devastating effects of microplastics throughout the ocean ecosystem.
+        </p>
+        
+        <div class="impact-grid">
+            <div class="impact-card">
+                <div class="impact-icon">
+                    <i class="fas fa-fish"></i>
+                </div>
+                <h4>Bioaccumulation</h4>
+                <p style="color: rgba(255, 255, 255, 0.9);">Plastic builds up in animals' bodies, increasing in concentration up the food chain.</p>
+            </div>
+            
+            <div class="impact-card">
+                <div class="impact-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h4>Human Consumption</h4>
+                <p style="color: rgba(255, 255, 255, 0.9);">We consume up to a credit card's worth of plastic each week through seafood and water.</p>
+            </div>
+            
+            <div class="impact-card">
+                <div class="impact-icon">
+                    <i class="fas fa-lungs"></i>
+                </div>
+                <h4>Toxic Chemicals</h4>
+                <p style="color: rgba(255, 255, 255, 0.9);">Plastics absorb pollutants like PCBs, which then enter marine organisms when ingested.</p>
+            </div>
+            
+            <div class="impact-card">
+                <div class="impact-icon">
+                    <i class="fas fa-coral"></i>
+                </div>
+                <h4>Coral Damage</h4>
+                <p style="color: rgba(255, 255, 255, 0.9);">Microplastics can smother coral reefs and block sunlight needed for photosynthesis.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section" id="solutions">
+        <h2 class="section-title">Solutions in Action</h2>
+        <p class="section-subtitle">
+            From personal choices to global initiatives, here's how we're fighting back.
+        </p>
+        
+        <div class="solutions-grid">
+            <div class="solution-card">
+                <h4><i class="fas fa-filter"></i> Advanced Filtration</h4>
+                <p>New washing machine filters can catch 90% of microfibers before they enter wastewater systems.</p>
+            </div>
+            
+            <div class="solution-card">
+                <h4><i class="fas fa-recycle"></i> Circular Economy</h4>
+                <p>Redesigning products to eliminate waste and keep materials in use reduces plastic pollution at source.</p>
+            </div>
+            
+            <div class="solution-card">
+                <h4><i class="fas fa-microscope"></i> Biodegradable Alternatives</h4>
+                <p>Developing plastics that safely break down in marine environments without creating microplastics.</p>
+            </div>
+            
+            <div class="solution-card">
+                <h4><i class="fas fa-water"></i> Ocean Cleanup Tech</h4>
+                <p>Innovative systems that capture plastic from rivers before it reaches the open ocean.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Action -->
+    <section class="action-section" id="personal-action">
+        <h2 class="section-title" style="color: white; text-align: center;">What You Can Do</h2>
+        <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.95); text-align: center;">
+            Simple actions that make a big difference in reducing microplastic pollution.
+        </p>
+        
+        <div class="action-cards">
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <h3>Choose Natural Fibers</h3>
+                <p>Opt for clothing made of cotton, wool, linen, or hemp instead of synthetic materials.</p>
+            </div>
+            
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-washing-machine"></i>
+                </div>
+                <h3>Use a Guppyfriend Bag</h3>
+                <p>Wash synthetic clothes in special bags that catch microfibers before they enter waterways.</p>
+            </div>
+            
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-bottle-water"></i>
+                </div>
+                <h3>Avoid Microbeads</h3>
+                <p>Check personal care products and avoid those with "polyethylene" or "polypropylene" in ingredients.</p>
+            </div>
+            
+            <div class="action-card">
+                <div class="action-icon">
+                    <i class="fas fa-hands"></i>
+                </div>
+                <h3>Support Cleanup Efforts</h3>
+                <p>Join beach cleanups or support organizations working on ocean plastic solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section" id="cta">
+        <h2 class="cta-title">Protect Our Blue Planet</h2>
+        <p class="cta-text">
+            The ocean gives us life, food, and oxygen. It's time to return the favor. 
+            Together, we can turn the tide on microplastic pollution.
+        </p>
+        
+        <div class="cta-buttons">
+            <button class="cta-button">
+                <i class="fas fa-download"></i>
+                <span>Download Action Guide</span>
+            </button>
+            <button class="cta-button secondary">
+                <i class="fas fa-hands-helping"></i>
+                <span>Join Cleanup Events</span>
+            </button>
+            <button class="cta-button secondary">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Educate Your Community</span>
+            </button>
+        </div>
+        
+        <p style="color: rgba(255, 255, 255, 0.8); margin-top: 40px; font-size: 1rem;">
+            <i class="fas fa-water"></i> Every action counts in the fight to save our oceans.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3><i class="fas fa-water"></i> Ocean Protection</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-fish"></i> Marine Life Impact</a></li>
+                    <li><a href="#"><i class="fas fa-trash"></i> Plastic Pollution</a></li>
+                    <li><a href="#"><i class="fas fa-microscope"></i> Microplastic Research</a></li>
+                    <li><a href="#"><i class="fas fa-hand-holding-water"></i> Clean Water Initiatives</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3><i class="fas fa-leaf"></i> EcoLife</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-arrow-left"></i> Back to Blog</a></li>
+                    <li><a href="#"><i class="fas fa-home"></i> Home Page</a></li>
+                    <li><a href="#"><i class="fas fa-book-open"></i> All Articles</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i> Contact Team</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3><i class="fas fa-hands-helping"></i> Get Involved</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fab fa-facebook"></i> Ocean Action Group</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Clean Ocean Campaign</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Science Updates</a></li>
+                    <li><a href="#"><i class="fas fa-newspaper"></i> Monthly Newsletter</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p><i class="fas fa-water"></i> © 2026 EcoLife Ocean Conservation Initiative <i class="fas fa-water"></i></p>
+            <p style="margin-top: 10px;">Protecting our oceans for future generations.</p>
+            <p style="margin-top: 10px; font-size: 0.85rem;">
+                <i class="fas fa-seedling"></i> No ocean, no life. No blue, no green. <i class="fas fa-seedling"></i>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved theme or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+        } else if (systemPrefersDark) {
+            body.setAttribute('data-theme', 'dark');
+        }
+        
+        // Toggle theme with animation
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Add animation
+            themeToggle.style.transform = 'rotate(360deg) scale(1.2)';
+            setTimeout(() => {
+                themeToggle.style.transform = '';
+            }, 300);
+            
+            // Create bubble animation
+            createBubbles(5);
+        });
+        
+        // Create floating bubbles
+        function createBubbles(count) {
+            for (let i = 0; i < count; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.left = Math.random() * 100 + 'vw';
+                bubble.style.width = bubble.style.height = (5 + Math.random() * 20) + 'px';
+                bubble.style.background = 'var(--ocean-blue)';
+                bubble.style.opacity = '0.6';
+                bubble.style.animation = `bubbleFloat ${3 + Math.random() * 4}s ease-out forwards`;
+                document.body.appendChild(bubble);
+                
+                // Remove bubble after animation
+                setTimeout(() => {
+                    bubble.remove();
+                }, 7000);
+            }
+        }
+        
+        // Add bubble float animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes bubbleFloat {
+                0% {
+                    transform: translateY(100vh) scale(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 0.6;
+                }
+                90% {
+                    opacity: 0.6;
+                }
+                100% {
+                    transform: translateY(-100px) scale(1);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Interactive plastic counter
+        function createPlasticCounter() {
+            const counter = document.createElement('div');
+            counter.id = 'plasticCounter';
+            counter.style.position = 'fixed';
+            counter.style.bottom = '20px';
+            counter.style.right = '20px';
+            counter.style.background = 'var(--card-bg)';
+            counter.style.padding = '15px 25px';
+            counter.style.borderRadius = 'var(--border-radius)';
+            counter.style.boxShadow = 'var(--shadow)';
+            counter.style.zIndex = '999';
+            counter.style.fontFamily = "'Poppins', sans-serif";
+            counter.style.fontSize = '0.9rem';
+            counter.style.color = 'var(--text-dark)';
+            counter.style.border = '2px solid var(--ocean-blue)';
+            
+            let plasticCount = 0;
+            const updateCounter = () => {
+                plasticCount += 27; // 27 kg enters ocean every second
+                counter.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-trash" style="color: var(--impact-red);"></i>
+                        <div>
+                            <div style="font-weight: 600; color: var(--impact-red);">${plasticCount.toLocaleString()} kg</div>
+                            <div style="font-size: 0.8rem; color: var(--text-light);">Plastic in ocean since you opened this page</div>
+                        </div>
+                    </div>
+                `;
+            };
+            
+            updateCounter();
+            setInterval(updateCounter, 1000); // Update every second
+            
+            document.body.appendChild(counter);
+            
+            // Make it draggable
+            let isDragging = false;
+            let offsetX, offsetY;
+            
+            counter.addEventListener('mousedown', startDrag);
+            
+            function startDrag(e) {
+                isDragging = true;
+                offsetX = e.clientX - counter.getBoundingClientRect().left;
+                offsetY = e.clientY - counter.getBoundingClientRect().top;
+                document.addEventListener('mousemove', drag);
+                document.addEventListener('mouseup', stopDrag);
+            }
+            
+            function drag(e) {
+                if (!isDragging) return;
+                counter.style.left = (e.clientX - offsetX) + 'px';
+                counter.style.top = (e.clientY - offsetY) + 'px';
+                counter.style.right = 'auto';
+                counter.style.bottom = 'auto';
+            }
+            
+            function stopDrag() {
+                isDragging = false;
+                document.removeEventListener('mousemove', drag);
+                document.removeEventListener('mouseup', stopDrag);
+            }
+        }
+        
+        // Create plastic counter after page loads
+        setTimeout(createPlasticCounter, 2000);
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Add staggered animation for cards
+                    if (entry.target.classList.contains('scale-card')) {
+                        const cards = document.querySelectorAll('.scale-card');
+                        const index = Array.from(cards).indexOf(entry.target);
+                        entry.target.style.transitionDelay = `${index * 0.15}s`;
+                    }
+                    
+                    if (entry.target.classList.contains('source-card')) {
+                        const cards = document.querySelectorAll('.source-card');
+                        const index = Array.from(cards).indexOf(entry.target);
+                        entry.target.style.transitionDelay = `${index * 0.1}s`;
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all interactive elements
+        document.querySelectorAll('.scale-card, .source-card, .impact-card, .solution-card, .action-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Add hover effects with bubble animation
+        document.querySelectorAll('.scale-card, .action-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                createBubbles(2);
+            });
+        });
+        
+        // CTA Button functionality
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const buttonText = this.querySelector('span').textContent;
+                
+                // Add click feedback
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+                
+                // Create more bubbles on click
+                createBubbles(3);
+                
+                // Show feedback based on button
+                if (buttonText.includes('Download')) {
+                    alert('🌊 Downloading Ocean Action Guide... Check your downloads folder!');
+                } else if (buttonText.includes('Join')) {
+                    alert('🤝 Finding ocean cleanup events near you...');
+                } else if (buttonText.includes('Educate')) {
+                    alert('📚 Accessing educational resources for your community...');
+                }
+            });
+        });
+        
+        // Update theme button color based on scroll position
+        window.addEventListener('scroll', () => {
+            const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            const toggle = document.querySelector('.theme-toggle');
+            
+            if (scrollPercentage < 20) {
+                toggle.style.borderColor = 'var(--ocean-blue)';
+                toggle.style.color = 'var(--ocean-blue)';
+            } else if (scrollPercentage < 40) {
+                toggle.style.borderColor = 'var(--deep-blue)';
+                toggle.style.color = 'var(--deep-blue)';
+            } else if (scrollPercentage < 60) {
+                toggle.style.borderColor = 'var(--coral-pink)';
+                toggle.style.color = 'var(--coral-pink)';
+            } else if (scrollPercentage < 80) {
+                toggle.style.borderColor = 'var(--seafoam-green)';
+                toggle.style.color = 'var(--seafoam-green)';
+            } else {
+                toggle.style.borderColor = 'var(--solution-teal)';
+                toggle.style.color = 'var(--solution-teal)';
+            }
+        });
+        
+        // Create initial bubbles
+        setTimeout(() => {
+            createBubbles(3);
+        }, 1000);
+        
+        // Periodic bubble creation
+        setInterval(() => {
+            if (Math.random() > 0.7) {
+                createBubbles(1);
+            }
+        }, 3000);
+        
+        console.log("🌊 Ocean Microplastics Guide - Marine Conservation Theme with Bubble Animations");
+    </script>
+</body>
+</html>
