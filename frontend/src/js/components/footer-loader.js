@@ -11,6 +11,9 @@ async function loadFooter() {
   const footerPlaceholder = document.getElementById("footer-placeholder");
   if (!footerPlaceholder) return;
 
+  // Ensure CSS is loaded
+  injectFooterStyles();
+
   // Determine path to footer.html based on current location
   // This helps when the script is used in pages at different directory levels
   let footerPath = 'components/footer.html';
@@ -43,6 +46,36 @@ async function loadFooter() {
     updateFooterPaths();
   } catch (error) {
     console.error('Error loading footer:', error);
+  }
+}
+
+function injectFooterStyles() {
+  // Determine prefix based on path
+  let prefix = '';
+  if (window.location.pathname.includes('/pages/')) {
+    const pathParts = window.location.pathname.split('/');
+    const pagesIndex = pathParts.indexOf('pages');
+    if (pagesIndex !== -1 && pagesIndex < pathParts.length - 2) {
+      prefix = '../../';
+    } else {
+      prefix = '../';
+    }
+  }
+
+  // Inject footer CSS if not already present
+  if (!document.querySelector('link[href*="footer.css"]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = prefix + 'css/components/footer.css';
+    document.head.appendChild(link);
+  }
+
+  // Inject FontAwesome if not already present (required for icons)
+  if (!document.querySelector('link[href*="font-awesome"]') && !document.querySelector('link[href*="all.min.css"]')) {
+    const fa = document.createElement('link');
+    fa.rel = 'stylesheet';
+    fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
+    document.head.appendChild(fa);
   }
 }
 
