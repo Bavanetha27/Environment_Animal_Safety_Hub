@@ -455,6 +455,147 @@ body {
   }
 }
 
+/* Challenges Section */
+.challenges-section {
+  background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+  padding: 4rem 0;
+  margin: 2rem 0;
+  border-radius: 12px;
+  box-shadow: var(--ai-shadow);
+}
+
+.challenges-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #92400E;
+  margin-bottom: 1.5rem;
+}
+
+.challenges-section h2 i {
+  margin-right: 0.5rem;
+  color: #DC2626;
+}
+
+.challenges-section > p {
+  text-align: center;
+  color: #78350F;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.challenge-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: var(--ai-shadow);
+  transition: all 0.3s ease;
+  border: 1px solid #FCD34D;
+}
+
+.challenge-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ai-shadow-hover);
+}
+
+.challenge-card .card-icon {
+  background: linear-gradient(135deg, #DC2626, #EA580C);
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.challenge-card h3 {
+  font-size: 1.5rem;
+  color: #92400E;
+  margin-bottom: 1rem;
+}
+
+.challenge-card p {
+  color: #78350F;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.challenge-card ul {
+  list-style: none;
+}
+
+.challenge-card li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #FED7AA;
+  color: #9A3412;
+}
+
+.challenge-card li:last-child {
+  border-bottom: none;
+}
+
+.challenge-card li:before {
+  content: '⚠️';
+  margin-right: 0.5rem;
+}
+
+.mitigation-section {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: var(--ai-shadow);
+}
+
+.mitigation-section h3 {
+  text-align: center;
+  font-size: 1.75rem;
+  color: var(--ai-primary);
+  margin-bottom: 2rem;
+}
+
+.mitigation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.mitigation-item {
+  text-align: center;
+  padding: 2rem;
+  background: var(--ai-light);
+  border-radius: 8px;
+  border: 1px solid var(--ai-border);
+}
+
+.mitigation-item h4 {
+  font-size: 1.25rem;
+  color: var(--ai-primary);
+  margin-bottom: 1rem;
+}
+
+.mitigation-item p {
+  color: var(--ai-text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .challenge-grid, .mitigation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .challenges-section {
+    padding: 2rem 0;
+  }
+
+  .mitigation-section {
+    padding: 2rem;
+  }
+}
+
 @media (max-width: 480px) {
   .hero {
     padding: 3rem 1rem;
